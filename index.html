@@ -147,12 +147,12 @@
 </head>
 <body>
 
-    <h1>🎙️ Giám Khảo AI "Real 100%"</h1>
+    <h1>🎙️ Các bạn hát đi để tui chấm cho </h1>
     
     <div class="container">
         
         <div class="input-wrapper" id="input-wrapper">
-            <p style="color: var(--accent);">Dán link YouTube vào đây! AI sẽ chấm dựa trên phổ âm thanh thật của bạn.</p>
+            <p style="color: var(--accent);">Dán link YouTube vào đây! Bài chấm sẽ dựa trên phổ âm thanh thật của bạn.</p>
             <input type="text" id="yt-link" placeholder="Nhập link YouTube...">
         </div>
 
@@ -178,7 +178,7 @@
             <div class="score-circle">
                 <span class="score-number" id="final-score">0</span>
             </div>
-            <div class="bonus-text">(Bao gồm +5 điểm khuyến khích tự tin)</div>
+            <div class="bonus-text">(Đáng khen vì bạn đã tự tin hát !)</div>
             
             <div class="feedback-text" id="feedback-msg">Đang đánh giá...</div>
             
@@ -420,10 +420,10 @@
 
                 let rawTotal = pPitch + pRhythm + pTech + pTone + pExpression;
 
-                if (rawTotal > 85) feedback = "Xuất sắc! Giọng ca này có tố chất làm ca sĩ, xử lý nốt và kỹ thuật rất mượt!";
-                else if (rawTotal > 70) feedback = "Hát hay đó! Có phong cách riêng, chỉ cần luyện hơi thêm tí nữa là hoàn hảo.";
+                if (rawTotal > 85) feedback = "Xuất sắc! Giọng ca này có tố chất làm ca sĩ !";
+                else if (rawTotal > 70) feedback = "Hát hay đó bạn ơi !";
                 else if (rawTotal > 50) feedback = "Giọng hát mang tính chất giải trí cao! Đam mê là chính, kỹ năng từ từ tính.";
-                else feedback = "Nghe xong ban giám khảo muốn rớt nước mắt... vì cảm động nghị lực của bạn. Cố lên nhé!";
+                else feedback = "Nghe xong tôi muốn rớt nước mắt... vì cảm động nghị lực của bạn. Cố lên nhé!";
             }
 
             // CỘNG 5 ĐIỂM KHUYẾN KHÍCH CHO MỌI NGƯỜI
