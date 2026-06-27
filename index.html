@@ -16,29 +16,61 @@
             --text-glow: 0 0 10px rgba(102, 252, 241, 0.8), 0 0 20px rgba(102, 252, 241, 0.4);
         }
         
+        /* ĐỘ LẠI NỀN ĐỘNG Ở ĐÂY NÈ */
         body {
             margin: 0; padding: 0;
             font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(135deg, var(--bg-color) 0%, #1f2833 100%);
+            background: linear-gradient(-45deg, #0b0c10, #1f2833, #0a0f1c, #0b1528);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             color: white;
             min-height: 100vh;
             display: flex; flex-direction: column; align-items: center;
             overflow-x: hidden;
+            position: relative;
         }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* KHUNG CHỨA CÁC VÌ SAO THIÊN HÀ */
+        #galaxy-bg {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -1; overflow: hidden; pointer-events: none;
+        }
+
+        .falling-star {
+            position: absolute; background: #fff; border-radius: 50%;
+            box-shadow: 0 0 12px 2px var(--primary);
+            animation: drift linear infinite; opacity: 0;
+        }
+
+        @keyframes drift {
+            0% { transform: translateY(110vh) translateX(0) scale(0.5); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-10vh) translateX(30px) scale(1.2); opacity: 0; }
+        }
+        /* KẾT THÚC PHẦN NỀN ĐỘNG */
         
         h1 {
             font-weight: 900; text-transform: uppercase; text-shadow: var(--text-glow);
             margin-top: 30px; text-align: center; color: var(--primary);
+            z-index: 1;
         }
         
         .container {
             width: 90%; max-width: 1000px;
-            background: rgba(31, 40, 51, 0.8);
-            backdrop-filter: blur(15px);
+            background: rgba(31, 40, 51, 0.7);
+            backdrop-filter: blur(12px); /* Tăng độ trong suốt để thấy thiên hà */
             border-radius: 20px; padding: 30px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
             border: 1px solid rgba(102, 252, 241, 0.2);
             margin-bottom: 50px; transition: all 0.5s ease;
+            z-index: 1;
         }
         
         /* INPUT AREA */
@@ -118,7 +150,8 @@
         
         .score-number { position: relative; z-index: 2; color: var(--primary); text-shadow: 0 0 10px var(--primary); }
         
-        .bonus-text { font-size: 14px; color: #f1c40f; margin-bottom: 10px; font-weight: bold;}
+        .bonus-text { font-size: 14px; color: #f1c40f; margin-bottom: 5px; font-weight: bold;}
+        .tai-sponsor-text { font-size: 15px; color: var(--primary); margin-bottom: 20px; font-style: italic; font-weight: bold; background: rgba(102, 252, 241, 0.1); padding: 10px 20px; border-radius: 8px; border: 1px dashed var(--primary); }
         .penalty-text { font-size: 15px; color: #ff4c4c; margin-bottom: 20px; font-weight: bold; background: rgba(255, 76, 76, 0.1); padding: 10px 20px; border-radius: 8px; border: 1px solid rgba(255, 76, 76, 0.3); display: none;}
         
         .feedback-text { font-size: 22px; color: #fff; margin-bottom: 30px; }
@@ -146,6 +179,9 @@
     </style>
 </head>
 <body>
+    
+    <div id="galaxy-bg"></div>
+    
     <h1>🎙️ Các bạn hát đi để tui chấm cho </h1>
     <div class="container">
         <div class="input-wrapper" id="input-wrapper">
@@ -176,6 +212,7 @@
                 <span class="score-number" id="final-score">0</span>
             </div>
             <div class="bonus-text">(Đáng khen vì bạn đã tự tin hát !)</div>
+            <div class="tai-sponsor-text">"+5 điểm vì tự tin, 95 điểm còn lại AI đã tính và cộng điểm cho bạn theo đánh giá của Tài, vì thế bạn không cần phải thắc mắc vì sao mình có thể bị mắc lỗi nhưng điểm vẫn cao hơn bạn tính !"</div>
             <div class="penalty-text" id="penalty-msg"></div>
             
             <div class="feedback-text" id="feedback-msg">Đang đánh giá...</div>
@@ -207,6 +244,21 @@
     </div>
     
     <script>
+        // SCRIPT TẠO SAO CHO NỀN THIÊN HÀ ĐỘNG
+        const galaxy = document.getElementById('galaxy-bg');
+        for (let i = 0; i < 70; i++) {
+            let star = document.createElement('div');
+            star.className = 'falling-star';
+            let size = Math.random() * 3 + 1;
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.animationDelay = (Math.random() * 20) + 's';
+            star.style.animationDuration = (Math.random() * 10 + 10) + 's'; 
+            galaxy.appendChild(star);
+        }
+
+        // ================= KỊCH BẢN CHÍNH =================
         // DOM Elements
         const ytLinkInput = document.getElementById('yt-link');
         const ytContainer = document.getElementById('yt-container');
