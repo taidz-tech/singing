@@ -6,7 +6,7 @@
     <title>🎤 VIP KARAOKE AI - Hệ Real 100%</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
-
+        
         :root {
             --bg-color: #0b0c10;
             --primary: #66fcf1;
@@ -15,7 +15,7 @@
             --danger: #ff4c4c;
             --text-glow: 0 0 10px rgba(102, 252, 241, 0.8), 0 0 20px rgba(102, 252, 241, 0.4);
         }
-
+        
         body {
             margin: 0; padding: 0;
             font-family: 'Montserrat', sans-serif;
@@ -25,12 +25,12 @@
             display: flex; flex-direction: column; align-items: center;
             overflow-x: hidden;
         }
-
+        
         h1 {
             font-weight: 900; text-transform: uppercase; text-shadow: var(--text-glow);
             margin-top: 30px; text-align: center; color: var(--primary);
         }
-
+        
         .container {
             width: 90%; max-width: 1000px;
             background: rgba(31, 40, 51, 0.8);
@@ -40,12 +40,12 @@
             border: 1px solid rgba(102, 252, 241, 0.2);
             margin-bottom: 50px; transition: all 0.5s ease;
         }
-
+        
         /* INPUT AREA */
         .input-wrapper {
             display: flex; flex-direction: column; align-items: center; gap: 15px; margin-bottom: 20px;
         }
-
+        
         input[type="text"] {
             width: 80%; padding: 15px; border-radius: 10px; border: 2px solid #333;
             outline: none; font-size: 16px; background: rgba(0,0,0,0.5); color: white;
@@ -55,54 +55,54 @@
         input[type="text"]:focus {
             border-color: var(--primary); box-shadow: 0 0 15px var(--primary);
         }
-
+        
         /* YOUTUBE CONTAINER */
         .youtube-container {
             position: relative; width: 100%; padding-bottom: 56.25%; 
             border-radius: 15px; overflow: hidden; background: #000;
             display: none; margin-bottom: 20px; border: 2px solid var(--secondary);
         }
-
+        
         .youtube-container iframe {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
         }
-
+        
         .yt-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.6); z-index: 10;
             display: flex; justify-content: center; align-items: center;
         }
-
+        
         .btn {
             padding: 15px 30px; border-radius: 50px; border: none;
             font-weight: bold; font-size: 16px; cursor: pointer; transition: all 0.3s ease;
             text-transform: uppercase; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 11;
         }
-
+        
         .btn-primary { background: var(--primary); color: #000; display: none; }
         .btn-primary:hover { transform: scale(1.05); box-shadow: 0 0 20px var(--primary); }
-
+        
         .btn-secondary { background: transparent; border: 2px solid var(--primary); color: var(--primary); }
         .btn-secondary.active { background: var(--primary); color: #000; }
-
+        
         .btn-danger { background: var(--danger); color: white; }
         .btn-danger:hover { box-shadow: 0 0 20px var(--danger); }
-
+        
         /* VISUALIZER & CONTROLS */
         #singing-tools { display: none; flex-direction: column; align-items: center; width: 100%; }
-
+        
         .visualizer {
             width: 100%; height: 120px; background: #000; border-radius: 10px;
             margin-bottom: 20px; border: 1px solid var(--secondary);
         }
-
+        
         .controls { display: flex; gap: 15px; margin-bottom: 20px; }
-
+        
         /* RESULT SECTION */
         #result-section {
             display: none; flex-direction: column; align-items: center; text-align: center;
         }
-
+        
         .score-circle {
             width: 220px; height: 220px; border-radius: 50%;
             background: conic-gradient(var(--primary) 0%, var(--secondary) 100%);
@@ -110,59 +110,56 @@
             font-size: 70px; font-weight: 900; box-shadow: 0 0 50px rgba(102, 252, 241, 0.4);
             margin-bottom: 10px; position: relative;
         }
-
+        
         .score-circle::before {
             content: ''; position: absolute; width: 200px; height: 200px;
             background: var(--bg-color); border-radius: 50%; z-index: 1;
         }
-
+        
         .score-number { position: relative; z-index: 2; color: var(--primary); text-shadow: 0 0 10px var(--primary); }
-
-        .bonus-text { font-size: 14px; color: #f1c40f; margin-bottom: 20px; font-weight: bold;}
-
+        
+        .bonus-text { font-size: 14px; color: #f1c40f; margin-bottom: 10px; font-weight: bold;}
+        .penalty-text { font-size: 15px; color: #ff4c4c; margin-bottom: 20px; font-weight: bold; background: rgba(255, 76, 76, 0.1); padding: 10px 20px; border-radius: 8px; border: 1px solid rgba(255, 76, 76, 0.3); display: none;}
+        
         .feedback-text { font-size: 22px; color: #fff; margin-bottom: 30px; }
         .roast-text { color: var(--danger); font-weight: bold; text-shadow: 0 0 10px rgba(255,0,0,0.5); }
-
+        
         .criteria-list {
             width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px;
         }
-
+        
         .criterion {
             background: rgba(0,0,0,0.4); padding: 15px; border-radius: 10px; text-align: left;
             border-left: 4px solid var(--secondary);
         }
-
+        
         .criterion label { font-weight: bold; margin-bottom: 5px; display: block; font-size: 14px; color: var(--accent);}
         
         .progress-bar {
             width: 100%; height: 12px; background: #111; border-radius: 6px; overflow: hidden; margin-top: 8px;
         }
-
+        
         .progress-fill {
             height: 100%; background: linear-gradient(90deg, var(--secondary), var(--primary));
             width: 0%; transition: width 1.5s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
-
     </style>
 </head>
 <body>
-
     <h1>🎙️ Các bạn hát đi để tui chấm cho </h1>
-    
     <div class="container">
-        
         <div class="input-wrapper" id="input-wrapper">
             <p style="color: var(--accent);">Dán link YouTube vào đây! Bài chấm sẽ dựa trên phổ âm thanh thật của bạn.</p>
             <input type="text" id="yt-link" placeholder="Nhập link YouTube...">
         </div>
-
+        
         <div class="youtube-container" id="yt-container">
             <div class="yt-overlay" id="overlay">
                 <button class="btn btn-primary" id="start-btn">▶ Cầm Mic Lên</button>
             </div>
             <div id="yt-player"></div>
         </div>
-
+        
         <div id="singing-tools">
             <p style="color: var(--primary); font-weight: bold;">🔴 Đang phân tích sóng âm thanh thật...</p>
             <canvas class="visualizer" id="audioCanvas"></canvas>
@@ -172,13 +169,14 @@
                 <button class="btn btn-danger" id="finish-btn" style="display: block;">🛑 Xem Điểm Thật!</button>
             </div>
         </div>
-
+        
         <div id="result-section">
             <h2>ĐIỂM SỐ THỰC TẾ CỦA BẠN</h2>
             <div class="score-circle">
                 <span class="score-number" id="final-score">0</span>
             </div>
             <div class="bonus-text">(Đáng khen vì bạn đã tự tin hát !)</div>
+            <div class="penalty-text" id="penalty-msg"></div>
             
             <div class="feedback-text" id="feedback-msg">Đang đánh giá...</div>
             
@@ -207,7 +205,7 @@
             <button class="btn btn-primary" style="display: block;" onclick="location.reload()">🔄 Phục Thù</button>
         </div>
     </div>
-
+    
     <script>
         // DOM Elements
         const ytLinkInput = document.getElementById('yt-link');
@@ -228,7 +226,7 @@
         const canvas = document.getElementById('audioCanvas');
         const canvasCtx = canvas.getContext('2d');
         let currentVideoId = '';
-
+        
         // DATA THU THẬP THỰC TẾ
         let singData = {
             totalFrames: 0,
@@ -236,15 +234,20 @@
             pitchStabilityScore: 0, 
             volumeVariance: [],
             harmonicRichness: 0,
-            lastDominantFreq: 0
+            lastDominantFreq: 0,
+            // Thêm các biến đếm lỗi & buff ẩn
+            silenceFramesCount: 0,
+            missedWordsErrors: 0,
+            offBeatErrors: 0,
+            highPitchFrames: 0
         };
-
+        
         function getYouTubeID(url) {
             const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
             const match = url.match(regExp);
             return (match && match[2].length === 11) ? match[2] : null;
         }
-
+        
         ytLinkInput.addEventListener('input', () => {
             const videoId = getYouTubeID(ytLinkInput.value);
             if (videoId && videoId !== currentVideoId) {
@@ -254,7 +257,7 @@
                 startBtn.style.display = 'block';
             }
         });
-
+        
         startBtn.addEventListener('click', async () => {
             try {
                 const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -264,14 +267,14 @@
                 inputWrapper.style.display = 'none';
                 
                 ytPlayerDiv.innerHTML = `<iframe src="https://www.youtube.com/embed/${currentVideoId}?autoplay=1&controls=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-
+                
                 singingTools.style.display = 'flex';
                 drawVisualizerAndAnalyze();
             } catch (err) {
                 alert("Không có Micro thì AI lấy gì phân tích đây đại ca?");
             }
         });
-
+        
         function setupAudio(stream) {
             audioCtx = new (window.AudioContext || window.webkitAudioContext)();
             analyser = audioCtx.createAnalyser();
@@ -300,7 +303,7 @@
                 }
             });
         }
-
+        
         // VỪA VẼ SÓNG VỪA PHÂN TÍCH DATA (REAL LOGIC)
         function drawVisualizerAndAnalyze() {
             canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight;
@@ -322,14 +325,20 @@
                 }
                 let rms = Math.sqrt(sumSquares / bufferLength);
                 let volumeDB = 20 * Math.log10(rms > 0 ? rms : 0.0001);
-
+                
                 singData.totalFrames++;
-
+                
                 // Lọc tạp âm, chỉ tính khi thực sự có tiếng hát (âm lượng trên ngưỡng)
                 if (volumeDB > -35) { // Ngưỡng có người hát
                     singData.activeFrames++;
                     singData.volumeVariance.push(volumeDB);
-
+                    
+                    // Phát hiện lỗi trật nhịp (từ im lặng đột ngột vọt tiếng vào sai nhịp)
+                    if (singData.silenceFramesCount > 30 && singData.silenceFramesCount < 80) {
+                        singData.offBeatErrors++;
+                    }
+                    singData.silenceFramesCount = 0;
+                    
                     // 2. Tìm Tần số chủ đạo (Pitch Index cơ bản)
                     let maxIndex = 0;
                     let maxAmp = 0;
@@ -338,23 +347,36 @@
                             maxAmp = freqData[i]; maxIndex = i;
                         }
                     }
-
+                    
+                    // Phát hiện giọng ngọt/giọng nữ (Dải tần cao - Buff ẩn)
+                    let dominantFreqHz = maxIndex * (audioCtx.sampleRate / analyser.fftSize);
+                    if (dominantFreqHz > 160 && dominantFreqHz < 350) {
+                        singData.highPitchFrames++;
+                    }
+                    
                     // Tính độ ổn định (không bị nhảy nốt lung tung)
                     if (singData.lastDominantFreq !== 0) {
                         let diff = Math.abs(maxIndex - singData.lastDominantFreq);
                         if(diff < 5) singData.pitchStabilityScore += 1; // Hát chắc nốt
                     }
                     singData.lastDominantFreq = maxIndex;
-
+                    
                     // 3. Tính độ vang/dày của giọng (Harmonic Richness)
-                    // Giọng xịn sẽ có nhiều đỉnh tần số (harmonics) cao hơn tần số gốc
                     let harmonicEnergy = 0;
                     for(let i = maxIndex + 5; i < bufferLength; i++) {
                         if(freqData[i] > 100) harmonicEnergy++;
                     }
                     singData.harmonicRichness += harmonicEnergy;
+                    
+                } else {
+                    // Khi im lặng
+                    singData.silenceFramesCount++;
+                    // Khoảng thời gian im lặng quá lâu giữa bài hát -> Bắt lỗi quên lời/vấp
+                    if (singData.silenceFramesCount === 90) {
+                        singData.missedWordsErrors++;
+                    }
                 }
-
+                
                 // ============ VẼ UI ============
                 canvasCtx.fillStyle = 'rgba(11, 12, 16, 0.4)';
                 canvasCtx.fillRect(0, 0, canvas.width, canvas.height);
@@ -372,7 +394,7 @@
             }
             loop();
         }
-
+        
         // TÍNH TOÁN ĐIỂM SỐ KHI DỪNG
         finishBtn.addEventListener('click', () => {
             if(audioCtx) audioCtx.suspend();
@@ -381,57 +403,77 @@
             singingTools.style.display = 'none';
             ytContainer.style.display = 'none'; ytPlayerDiv.innerHTML = ''; 
             resultSec.style.display = 'flex';
-
+            
             let pPitch = 0, pRhythm = 0, pTech = 0, pTone = 0, pExpression = 0;
             let feedback = "";
-            let isRoastMode = false;
-
+            let secretBuff = 0;
+            
             // KIỂM TRA XEM CÓ HÁT THẬT KHÔNG
             let activeRatio = singData.totalFrames > 0 ? (singData.activeFrames / singData.totalFrames) : 0;
             
             if (activeRatio < 0.05) {
                 // TỈ LỆ HÁT QUÁ THẤP -> CẦM MIC NHƯNG KHÔNG HÁT
-                isRoastMode = true;
                 feedback = "<span class='roast-text'>Ủa alô??? Bật mic lên để làm cảnh à? Không hát hò gì mà đòi chấm điểm! Phạt điểm 0 toàn tập! Nhận 5 điểm khuyến khích đi về!! 😒</span>";
-                // Tất cả bằng 0, chỉ lấy điểm khuyến khích
                 pPitch = 0; pRhythm = 0; pTech = 0; pTone = 0; pExpression = 0;
+                singData.missedWordsErrors = 0; singData.offBeatErrors = 0;
             } else {
                 // HÁT THẬT -> TÍNH TOÁN DỰA TRÊN DATA VẬT LÝ
                 
-                // 1. Cao độ (Pitch) / 20đ : Dựa trên độ ổn định nốt
+                // 1. Cao độ (Pitch) / 20đ
                 let stabilityRatio = singData.pitchStabilityScore / singData.activeFrames;
                 pPitch = Math.min(20, Math.max(5, Math.round(stabilityRatio * 35))); 
                 
-                // 2. Kỹ thuật / 20đ: Kết hợp pitch và khả năng giữ mic
+                // 2. Kỹ thuật / 20đ
                 pTech = Math.min(20, Math.max(5, pPitch - Math.floor(Math.random()*4))); 
-
-                // 3. Trường độ / 20đ: Thời lượng thực sự cất giọng đều đặn
+                
+                // 3. Trường độ / 20đ
                 pRhythm = Math.min(20, Math.max(10, Math.round(activeRatio * 30)));
-
-                // 4. Biểu cảm / 20đ: Tính biến thiên của âm lượng (Dynamic Range)
+                
+                // 4. Biểu cảm / 20đ
                 let volMax = Math.max(...singData.volumeVariance);
                 let volMin = Math.min(...singData.volumeVariance);
                 let dynamicRange = volMax - volMin;
                 pExpression = Math.min(20, Math.max(8, Math.round(dynamicRange * 0.8)));
-
-                // 5. Chất giọng / 15đ: Dựa trên Harmonic Richness
+                
+                // 5. Chất giọng / 15đ
                 let avgRichness = singData.harmonicRichness / singData.activeFrames;
                 pTone = Math.min(15, Math.max(5, Math.round(avgRichness * 0.5)));
-
+                
+                // TÍNH TOÁN SECRET BUFF CHO GIỌNG NGỌT/NỮ
+                let sweetRatio = singData.highPitchFrames / singData.activeFrames;
+                if (sweetRatio > 0.4) {
+                    secretBuff = 8; // Buff ngầm
+                    pTone = Math.min(15, pTone + 3); // Kéo thanh điểm tone lên chút cho đẹp
+                }
+                
                 let rawTotal = pPitch + pRhythm + pTech + pTone + pExpression;
-
+                
+                // Giữ y nguyên bộ câu feedback của bạn
                 if (rawTotal > 85) feedback = "Xuất sắc! Giọng ca này có tố chất làm ca sĩ !";
                 else if (rawTotal > 70) feedback = "Hát hay đó bạn ơi !";
                 else if (rawTotal > 50) feedback = "Giọng hát mang tính chất giải trí cao! Đam mê là chính, kỹ năng từ từ tính.";
                 else feedback = "Nghe xong tôi muốn rớt nước mắt... vì cảm động nghị lực của bạn. Cố lên nhé!";
             }
-
-            // CỘNG 5 ĐIỂM KHUYẾN KHÍCH CHO MỌI NGƯỜI
-            let finalScore = pPitch + pRhythm + pTech + pTone + pExpression + 5;
+            
+            // TÍNH TOÁN TRỪ ĐIỂM
+            let errorsTotal = singData.missedWordsErrors + singData.offBeatErrors;
+            let penaltyPoints = Math.min(15, errorsTotal); // Trừ tối đa 15 điểm cho nương tay
+            
+            if (penaltyPoints > 0) {
+                let pDiv = document.getElementById('penalty-msg');
+                pDiv.style.display = 'block';
+                pDiv.innerHTML = `⚠️ CẢNH BÁO AI: Phát hiện ${singData.missedWordsErrors} lần hát vấp/thiếu chữ và ${singData.offBeatErrors} lần hát lệch nhịp. Trừ ${penaltyPoints} điểm nhé!`;
+            }
+            
+            // TỔNG KẾT: Điểm gốc + 5đ tự tin + Secret Buff - Trừ lỗi
+            let finalScore = pPitch + pRhythm + pTech + pTone + pExpression + 5 + secretBuff - penaltyPoints;
+            
+            // Giữ điểm trong khoảng 10 đến 100
+            finalScore = Math.min(100, Math.max(10, finalScore));
             
             document.getElementById('feedback-msg').innerHTML = feedback;
-
-            // Chạy số cực gắt
+            
+            // Hiệu ứng đếm điểm
             let currentDisplay = 0;
             const scoreInterval = setInterval(() => {
                 if(currentDisplay >= finalScore) {
@@ -444,7 +486,7 @@
                 }
             }, 30);
         });
-
+        
         function animateBars(p, r, t, to, e) {
             setTimeout(() => {
                 document.getElementById('val-pitch').innerText = p;
